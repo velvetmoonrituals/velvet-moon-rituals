@@ -1,0 +1,2064 @@
+:root {
+    --black: #080706;
+    --black-soft: #0e0b0a;
+    --wine: #1a0d0f;
+    --wine-soft: #291417;
+
+    --gold: #d8b66b;
+    --gold-bright: #e8c982;
+    --gold-soft: rgba(216, 182, 107, 0.42);
+
+    --cream: #f3ead9;
+    --muted: #b7aa98;
+
+    --line: rgba(216, 182, 107, 0.22);
+    --white-line: rgba(255, 255, 255, 0.11);
+
+    --serif: "Bodoni Moda", Georgia, serif;
+    --sans: "Manrope", Arial, sans-serif;
+
+    --ease: cubic-bezier(.2, .75, .2, 1);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: var(--sans);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    width: min(1180px, calc(100% - 64px));
+    margin: 0 auto;
+}
+
+.section {
+    padding: 145px 0;
+}
+
+p {
+    color: var(--muted);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+}
+
+em {
+    font-style: italic;
+}
+
+
+/* =====================================================
+   EYEBROW
+===================================================== */
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.6px;
+}
+
+.eyebrow span {
+    width: 34px;
+    height: 1px;
+    display: inline-block;
+
+    background: var(--gold);
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.site-header {
+    position: fixed;
+    inset: 0 0 auto;
+
+    z-index: 1000;
+
+    height: 86px;
+    padding: 0 42px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    border-bottom: 1px solid transparent;
+
+    transition:
+        height .4s var(--ease),
+        background .4s ease,
+        border-color .4s ease;
+}
+
+.site-header.header-scrolled {
+    height: 70px;
+
+    background: rgba(8, 7, 6, .86);
+
+    backdrop-filter: blur(16px);
+
+    border-color: var(--white-line);
+}
+
+
+/* BRAND */
+
+.brand {
+    width: max-content;
+
+    display: inline-flex;
+    flex-direction: column;
+
+    line-height: 1;
+
+    text-decoration: none;
+}
+
+.brand-main {
+    font-family: var(--serif);
+
+    font-size: 17px;
+
+    letter-spacing: 1.5px;
+}
+
+.brand-sub {
+    margin-top: 7px;
+
+    color: var(--gold);
+
+    font-size: 7px;
+    font-weight: 600;
+
+    letter-spacing: 3px;
+}
+
+
+/* DESKTOP NAV */
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.desktop-nav a {
+    color: #d2c7b6;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 9px;
+    letter-spacing: 1.7px;
+
+    transition: .3s ease;
+}
+
+.desktop-nav a:hover {
+    color: var(--gold-bright);
+}
+
+
+/* HEADER CTA */
+
+.header-cta {
+    justify-self: end;
+
+    padding: 13px 17px;
+
+    border: 1px solid var(--gold-soft);
+    border-radius: 999px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 9px;
+    letter-spacing: 1.7px;
+
+    transition: .3s ease;
+}
+
+.header-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.header-cta span {
+    margin-left: 8px;
+}
+
+
+/* MOBILE MENU BUTTON */
+
+.menu-toggle {
+    display: none;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid var(--gold-soft);
+    border-radius: 50%;
+
+    background: transparent;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 16px;
+    height: 1px;
+
+    background: var(--gold-bright);
+
+    transition: .3s ease;
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+
+    z-index: 999;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(57, 25, 28, .35),
+            transparent 40%
+        ),
+        rgba(8, 7, 6, .97);
+
+    backdrop-filter: blur(18px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 100px 40px 40px;
+
+    transform: translateY(-100%);
+
+    transition: transform .55s var(--ease);
+}
+
+.mobile-menu.open {
+    transform: translateY(0);
+}
+
+.mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-menu nav a {
+    font-family: var(--serif);
+
+    font-size: 42px;
+    line-height: 1;
+
+    text-decoration: none;
+
+    color: var(--cream);
+
+    transition: .3s ease;
+}
+
+.mobile-menu nav a:hover {
+    color: var(--gold-bright);
+}
+
+.mobile-menu-cta {
+    width: fit-content;
+
+    margin-top: 45px;
+
+    padding: 15px 22px;
+
+    border: 1px solid var(--gold-soft);
+    border-radius: 999px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    position: relative;
+
+    min-height: 900px;
+
+    display: flex;
+    align-items: center;
+
+    isolation: isolate;
+
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+
+    z-index: -4;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8, 7, 6, .83) 0%,
+            rgba(8, 7, 6, .50) 45%,
+            rgba(8, 7, 6, .48) 100%
+        ),
+        url("images/hero.jpg") center / cover no-repeat;
+
+    transform: scale(1.02);
+}
+
+.hero-vignette {
+    position: absolute;
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 72% 48%,
+            transparent 0 18%,
+            rgba(8, 7, 6, .22) 54%,
+            rgba(8, 7, 6, .88) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(8, 7, 6, .28),
+            transparent 30%,
+            rgba(8, 7, 6, .75)
+        );
+}
+
+.hero-frame {
+    position: absolute;
+    inset: 24px;
+
+    z-index: -2;
+
+    border: 1px solid rgba(216, 182, 107, .55);
+
+    border-radius: 22px;
+
+    pointer-events: none;
+}
+
+.hero-inner {
+    width: min(1180px, calc(100% - 64px));
+
+    margin: 0 auto;
+}
+
+.hero-copy {
+    max-width: 690px;
+
+    padding-top: 50px;
+}
+
+.hero h1 {
+    margin: 28px 0 30px;
+
+    color: #f5ecdd;
+
+    font-size: clamp(70px, 7.2vw, 108px);
+
+    line-height: .92;
+
+    letter-spacing: -3px;
+}
+
+.hero-description {
+    max-width: 490px;
+
+    margin-bottom: 34px;
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    min-height: 55px;
+
+    padding: 0 25px;
+
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.9px;
+
+    transition: .35s var(--ease);
+}
+
+.btn-gold {
+    min-width: 205px;
+
+    background: var(--gold-bright);
+
+    color: #18110a;
+}
+
+.btn-gold:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(216, 182, 107, .2);
+}
+
+.btn-gold span {
+    margin-left: 20px;
+
+    font-size: 16px;
+}
+
+.btn-outline {
+    min-width: 190px;
+
+    border: 1px solid rgba(216, 182, 107, .5);
+}
+
+.btn-outline:hover {
+    background: rgba(216, 182, 107, .1);
+}
+
+
+/* HERO META */
+
+.hero-meta {
+    margin-top: 35px;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    color: var(--gold);
+
+    font-size: 8px;
+    letter-spacing: 2.1px;
+}
+
+.hero-meta i {
+    font-style: normal;
+
+    opacity: .6;
+}
+
+
+/* HERO SIGNATURE */
+
+.hero-signature {
+    width: 200px;
+
+    margin-top: 31px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+.signature-line {
+    height: 1px;
+
+    flex: 1;
+
+    background: var(--gold-soft);
+}
+
+.moon-symbol {
+    color: var(--gold-bright);
+
+    font-size: 21px;
+}
+
+.hero-footnote {
+    margin-top: 19px;
+
+    color: rgba(243, 234, 217, .55);
+
+    font-size: 7px;
+    letter-spacing: 2.4px;
+}
+
+.hero-stars {
+    position: absolute;
+
+    right: 10%;
+    top: 23%;
+
+    color: rgba(232, 201, 130, .65);
+
+    font-size: 12px;
+
+    letter-spacing: 8px;
+}
+
+
+/* =====================================================
+   SECTION HEADINGS
+===================================================== */
+
+.section-heading {
+    max-width: 620px;
+}
+
+.section-heading h2 {
+    margin: 25px 0 28px;
+
+    font-size: clamp(55px, 6vw, 84px);
+
+    line-height: .96;
+
+    letter-spacing: -2px;
+}
+
+.section-heading p {
+    max-width: 460px;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+.centered {
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.centered .eyebrow {
+    justify-content: center;
+}
+
+
+/* =====================================================
+   RITUAL EXPERIENCES
+===================================================== */
+
+.rituals {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(60, 24, 27, .3),
+            transparent 32%
+        ),
+        var(--black);
+}
+
+.ritual-grid {
+    margin-top: 75px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.ritual-card {
+    position: relative;
+
+    min-height: 390px;
+
+    padding: 30px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--white-line);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(39, 18, 20, .7),
+            rgba(12, 9, 8, .85)
+        );
+
+    display: flex;
+    flex-direction: column;
+
+    transition: .5s var(--ease);
+}
+
+.ritual-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -100px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(216, 182, 107, .11),
+            transparent 70%
+        );
+}
+
+.ritual-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(216, 182, 107, .38);
+}
+
+.ritual-card-featured {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(57, 25, 28, .9),
+            rgba(14, 9, 8, .9)
+        );
+}
+
+.card-number {
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.card-symbol {
+    position: absolute;
+
+    top: 25px;
+    right: 28px;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid var(--gold-soft);
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--gold-bright);
+
+    font-size: 16px;
+}
+
+.card-content {
+    max-width: 420px;
+
+    margin-top: auto;
+}
+
+.card-content > span {
+    color: var(--gold);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.card-content h3 {
+    margin: 12px 0 16px;
+
+    font-size: 40px;
+
+    line-height: 1;
+}
+
+.card-content p {
+    max-width: 370px;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+.ritual-card-footer {
+    margin-top: 30px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid var(--white-line);
+
+    display: flex;
+    justify-content: space-between;
+
+    color: var(--gold);
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition: .3s ease;
+}
+
+.ritual-card-footer:hover {
+    color: var(--gold-bright);
+
+    padding-left: 4px;
+}
+
+.ritual-card-footer b {
+    font-weight: 400;
+}
+
+.ritual-note {
+    margin-top: 40px;
+
+    color: rgba(243, 234, 217, .45);
+
+    font-size: 9px;
+
+    letter-spacing: 1.2px;
+
+    text-align: center;
+}
+
+.ritual-note span {
+    margin: 0 12px;
+
+    color: var(--gold);
+}
+
+
+/* =====================================================
+   OUR APPROACH
+===================================================== */
+
+.about {
+    background: #0c0908;
+
+    border-top: 1px solid rgba(255, 255, 255, .04);
+    border-bottom: 1px solid rgba(255, 255, 255, .04);
+}
+
+.editorial-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+    align-items: start;
+}
+
+.editorial-intro {
+    position: sticky;
+
+    top: 130px;
+}
+
+.editorial-intro h2 {
+    margin: 28px 0;
+
+    font-size: clamp(56px, 6vw, 82px);
+
+    line-height: .94;
+}
+
+.editorial-intro p {
+    max-width: 430px;
+
+    font-size: 14px;
+
+    line-height: 1.95;
+}
+
+.editorial-mark {
+    margin-top: 55px;
+
+    color: var(--gold);
+
+    font-size: 40px;
+}
+
+.principles {
+    border-top: 1px solid var(--line);
+}
+
+.principle {
+    padding: 32px 0;
+
+    display: grid;
+
+    grid-template-columns: 45px 1fr;
+
+    gap: 25px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.principle > span {
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.principle h3 {
+    margin-bottom: 10px;
+
+    font-size: 30px;
+}
+
+.principle p {
+    max-width: 450px;
+
+    font-size: 12px;
+
+    line-height: 1.85;
+}
+
+
+/* =====================================================
+   HOW IT WORKS
+===================================================== */
+
+.how {
+    background:
+        radial-gradient(
+            circle at 90% 60%,
+            rgba(65, 29, 32, .25),
+            transparent 30%
+        ),
+        var(--black);
+}
+
+.process-grid {
+    margin-top: 70px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.process-step {
+    padding: 32px 25px 40px;
+
+    border-right: 1px solid var(--line);
+}
+
+.process-step:last-child {
+    border-right: 0;
+}
+
+.process-step > span {
+    color: var(--gold);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.process-icon {
+    margin: 40px 0 22px;
+
+    color: var(--gold-bright);
+
+    font-size: 25px;
+}
+
+.process-step h3 {
+    margin-bottom: 10px;
+
+    font-size: 30px;
+}
+
+.process-step p {
+    font-size: 11px;
+
+    line-height: 1.85;
+}
+
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote-section {
+    padding: 70px 0;
+
+    background: var(--black);
+}
+
+.quote-card {
+    padding: 75px 30px;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+
+    text-align: center;
+}
+
+.quote-mark {
+    color: var(--gold);
+
+    font-family: var(--serif);
+
+    font-size: 65px;
+
+    line-height: .6;
+}
+
+.quote-card p {
+    max-width: 950px;
+
+    margin: 25px auto 28px;
+
+    color: var(--cream);
+
+    font-family: var(--serif);
+
+    font-size: clamp(27px, 3.3vw, 46px);
+
+    line-height: 1.25;
+}
+
+.quote-card span {
+    color: var(--gold);
+
+    font-size: 8px;
+
+    letter-spacing: 2.7px;
+}
+
+
+/* =====================================================
+   FAQ
+===================================================== */
+
+.faq {
+    background: #0c0908;
+}
+
+.faq-layout {
+    display: grid;
+
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 100px;
+}
+
+.faq-list {
+    border-top: 1px solid var(--line);
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--line);
+}
+
+.faq-item summary {
+    padding: 26px 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    cursor: pointer;
+
+    list-style: none;
+
+    font-family: var(--serif);
+
+    font-size: 23px;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary span {
+    color: var(--gold);
+
+    font-family: var(--sans);
+
+    font-size: 18px;
+
+    transition: .3s ease;
+}
+
+.faq-item[open] summary span {
+    transform: rotate(45deg);
+}
+
+.faq-item p {
+    max-width: 650px;
+
+    padding: 0 45px 28px 0;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+}
+
+
+/* =====================================================
+   DISCLAIMER
+===================================================== */
+
+.disclaimer {
+    padding: 25px 0;
+
+    background: #090807;
+
+    border-top: 1px solid rgba(255, 255, 255, .04);
+    border-bottom: 1px solid rgba(255, 255, 255, .04);
+}
+
+.disclaimer p {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    font-size: 9px;
+
+    line-height: 1.7;
+
+    text-align: center;
+}
+
+.disclaimer strong {
+    color: var(--gold);
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact {
+    padding: 145px 0 125px;
+
+    background:
+        radial-gradient(
+            circle at 70% 50%,
+            rgba(57, 25, 28, .3),
+            transparent 38%
+        ),
+        var(--black);
+}
+
+.contact-inner {
+    display: grid;
+
+    grid-template-columns: .9fr 1.1fr;
+
+    gap: 95px;
+
+    align-items: center;
+}
+
+.contact-heading h2 {
+    margin: 28px 0;
+
+    font-size: clamp(60px, 6.5vw, 88px);
+
+    line-height: .92;
+}
+
+.contact-intro {
+    max-width: 450px;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+.contact-signature {
+    width: 190px;
+
+    margin: 35px 0 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.contact-signature span {
+    height: 1px;
+
+    flex: 1;
+
+    background: var(--gold-soft);
+}
+
+.contact-signature b {
+    color: var(--gold-bright);
+
+    font-family: var(--serif);
+
+    font-size: 22px;
+}
+
+.contact-note {
+    color: rgba(243, 234, 217, .45);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.contact-direct {
+    padding: 46px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(39, 18, 20, .72),
+            rgba(10, 8, 7, .8)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, .28);
+}
+
+.contact-direct-label {
+    color: var(--gold);
+
+    font-size: 8px;
+
+    letter-spacing: 2.5px;
+}
+
+.contact-direct h3 {
+    margin: 17px 0;
+
+    font-size: 50px;
+
+    line-height: .98;
+}
+
+.contact-direct > p {
+    margin-bottom: 28px;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* CONTACT BUTTONS */
+
+.contact-submit {
+    width: 100%;
+
+    min-height: 62px;
+
+    padding: 0 20px;
+
+    margin-bottom: 11px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 9px;
+
+    letter-spacing: 1.7px;
+
+    transition: .35s var(--ease);
+}
+
+.whatsapp-contact {
+    background: var(--gold-bright);
+
+    color: #171009;
+}
+
+.whatsapp-contact:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 35px rgba(216, 182, 107, .16);
+}
+
+.facebook-contact {
+    border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.facebook-contact:hover {
+    background: rgba(255, 255, 255, .05);
+}
+
+.contact-submit b {
+    font-size: 17px;
+
+    font-weight: 400;
+}
+
+
+/* EMAIL */
+
+.contact-email {
+    margin-top: 27px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid var(--white-line);
+
+    text-align: center;
+}
+
+.contact-email > span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--gold);
+
+    font-size: 7px;
+
+    letter-spacing: 2.4px;
+}
+
+.contact-email a {
+    color: var(--cream);
+
+    font-size: 11px;
+
+    text-decoration: none;
+
+    transition: .3s ease;
+}
+
+.contact-email a:hover {
+    color: var(--gold-bright);
+}
+
+.contact-direct-footer {
+    margin-top: 25px;
+
+    color: rgba(243, 234, 217, .38);
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer {
+    padding: 50px 0 38px;
+
+    background: #070605;
+
+    border-top: 1px solid var(--line);
+}
+
+.footer-inner {
+    display: flex;
+
+    align-items: end;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.footer-brand .brand-main {
+    font-size: 16px;
+}
+
+.footer-inner p {
+    margin-top: 13px;
+
+    font-size: 10px;
+}
+
+.footer-right {
+    color: rgba(243, 234, 217, .4);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    text-align: right;
+}
+
+.footer-right div {
+    margin-top: 13px;
+
+    display: flex;
+
+    gap: 20px;
+}
+
+.footer-right a {
+    text-decoration: none;
+}
+
+.footer-right a:hover {
+    color: var(--gold);
+}
+
+
+/* =====================================================
+   FLOATING WHATSAPP
+===================================================== */
+
+.whatsapp-floating {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 1200;
+
+    height: 54px;
+
+    padding: 0 18px;
+
+    border-radius: 999px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    background: #17110e;
+
+    border: 1px solid rgba(216, 182, 107, .55);
+
+    color: var(--cream);
+
+    text-decoration: none;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, .4);
+
+    transition: .3s var(--ease);
+}
+
+.whatsapp-floating span {
+    color: var(--gold-bright);
+
+    font-size: 20px;
+}
+
+.whatsapp-floating b {
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.whatsapp-floating:hover {
+    transform: translateY(-4px);
+
+    background: var(--gold-bright);
+
+    color: #171009;
+}
+
+.whatsapp-floating:hover span {
+    color: #171009;
+}
+
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(24px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s var(--ease);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .site-header {
+        grid-template-columns: 1fr auto;
+    }
+
+    .desktop-nav,
+    .header-cta {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .editorial-grid,
+    .faq-layout {
+        grid-template-columns: 1fr;
+
+        gap: 65px;
+    }
+
+    .editorial-intro {
+        position: static;
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-step:nth-child(2) {
+        border-right: 0;
+    }
+
+    .process-step:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .contact-inner {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .container,
+    .hero-inner {
+        width: calc(100% - 36px);
+    }
+
+    .section {
+        padding: 95px 0;
+    }
+
+
+    /* HEADER */
+
+    .site-header {
+        height: 70px;
+
+        padding: 0 18px;
+    }
+
+    .site-header.header-scrolled {
+        height: 62px;
+    }
+
+    .brand-main {
+        font-size: 15px;
+    }
+
+    .brand-sub {
+        margin-top: 6px;
+
+        font-size: 6px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 730px;
+
+        padding: 90px 0 48px;
+
+        align-items: center;
+    }
+
+    .hero-bg {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(8, 7, 6, .72),
+                rgba(8, 7, 6, .54)
+            ),
+            url("images/hero.jpg") center / cover no-repeat;
+
+        background-position: 55% center;
+    }
+
+    .hero-vignette {
+        background:
+            radial-gradient(
+                circle at 50% 43%,
+                transparent 0 20%,
+                rgba(8, 7, 6, .28) 60%,
+                rgba(8, 7, 6, .9) 100%
+            ),
+            linear-gradient(
+                180deg,
+                rgba(8, 7, 6, .18),
+                transparent 35%,
+                rgba(8, 7, 6, .78)
+            );
+    }
+
+    .hero-frame {
+        inset: 8px;
+
+        border-radius: 18px;
+    }
+
+    .hero-inner {
+        min-height: 600px;
+
+        display: flex;
+
+        align-items: center;
+    }
+
+    .hero-copy {
+        max-width: 100%;
+
+        padding-top: 20px;
+    }
+
+    .hero h1 {
+        margin: 21px 0 22px;
+
+        font-size: clamp(44px, 11.6vw, 57px);
+
+        line-height: .94;
+
+        letter-spacing: -1.6px;
+    }
+
+    .hero-description {
+        max-width: 340px;
+
+        margin-bottom: 26px;
+
+        font-size: 12px;
+
+        line-height: 1.8;
+    }
+
+    .hero-actions {
+        width: 100%;
+        max-width: 350px;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+
+        min-height: 55px;
+    }
+
+    .hero-meta {
+        margin-top: 26px;
+
+        font-size: 7px;
+
+        letter-spacing: 1.7px;
+    }
+
+    .hero-signature {
+        width: 185px;
+
+        margin-top: 26px;
+    }
+
+    .hero-footnote {
+        font-size: 6px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero-stars {
+        right: 10%;
+
+        top: 20%;
+
+        font-size: 9px;
+    }
+
+
+    /* HEADINGS */
+
+    .section-heading h2,
+    .editorial-intro h2,
+    .contact-heading h2 {
+        font-size: clamp(44px, 11vw, 60px);
+
+        line-height: .96;
+
+        letter-spacing: -1px;
+    }
+
+    .section-heading p,
+    .contact-intro {
+        font-size: 13px;
+
+        line-height: 1.85;
+    }
+
+
+    /* RITUALS */
+
+    .rituals {
+        padding-top: 105px;
+    }
+
+    .ritual-grid {
+        margin-top: 48px;
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .ritual-card {
+        min-height: 315px;
+
+        padding: 25px;
+
+        border-radius: 17px;
+    }
+
+    .card-symbol {
+        top: 20px;
+
+        right: 22px;
+    }
+
+    .card-content h3 {
+        font-size: 35px;
+    }
+
+    .card-content p {
+        font-size: 11px;
+    }
+
+    .ritual-note {
+        font-size: 8px;
+
+        line-height: 1.7;
+    }
+
+    .ritual-note span {
+        margin: 0 5px;
+    }
+
+
+    /* ABOUT */
+
+    .editorial-grid {
+        gap: 55px;
+    }
+
+    .editorial-intro p {
+        font-size: 13px;
+
+        line-height: 1.85;
+    }
+
+    .principle {
+        padding: 26px 0;
+
+        grid-template-columns: 35px 1fr;
+
+        gap: 16px;
+    }
+
+    .principle h3 {
+        font-size: 27px;
+    }
+
+    .principle p {
+        font-size: 11px;
+    }
+
+
+    /* PROCESS */
+
+    .process-grid {
+        margin-top: 48px;
+
+        grid-template-columns: 1fr;
+    }
+
+    .process-step,
+    .process-step:nth-child(2) {
+        padding: 27px 5px 30px;
+
+        border-right: 0;
+
+        border-bottom: 1px solid var(--line);
+    }
+
+    .process-step:last-child {
+        border-bottom: 0;
+    }
+
+    .process-icon {
+        margin: 27px 0 17px;
+    }
+
+
+    /* QUOTE */
+
+    .quote-section {
+        padding: 40px 0;
+    }
+
+    .quote-card {
+        padding: 55px 8px;
+    }
+
+    .quote-card p {
+        font-size: 29px;
+    }
+
+    .desktop-break {
+        display: none;
+    }
+
+
+    /* FAQ */
+
+    .faq-layout {
+        gap: 48px;
+    }
+
+    .faq-item summary {
+        padding: 22px 0;
+
+        font-size: 21px;
+    }
+
+    .faq-item p {
+        padding-right: 5px;
+
+        font-size: 11px;
+    }
+
+
+    /* DISCLAIMER */
+
+    .disclaimer {
+        padding: 22px 0;
+    }
+
+    .disclaimer p {
+        font-size: 8px;
+    }
+
+
+    /* CONTACT */
+
+    .contact {
+        padding: 100px 0 85px;
+
+        overflow: hidden;
+    }
+
+    .contact-inner {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 42px;
+    }
+
+    .contact-heading {
+        text-align: center;
+    }
+
+    .contact-heading .eyebrow {
+        justify-content: center;
+    }
+
+    .contact-intro {
+        max-width: 420px;
+
+        margin: 0 auto;
+    }
+
+    .contact-signature {
+        margin: 28px auto 18px;
+
+        justify-content: center;
+    }
+
+    .contact-note {
+        text-align: center;
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+    }
+
+    .contact-direct {
+        width: 100%;
+        max-width: 520px;
+
+        margin: 0 auto;
+
+        padding: 28px 22px 30px;
+
+        border-radius: 18px;
+    }
+
+    .contact-direct h3 {
+        font-size: clamp(31px, 8vw, 43px);
+    }
+
+    .contact-direct > p {
+        font-size: 12px;
+    }
+
+    .contact-submit {
+        min-height: 58px;
+
+        padding: 0 17px;
+
+        border-radius: 11px;
+
+        font-size: 9px;
+    }
+
+    .contact-email a {
+        display: block;
+
+        overflow-wrap: anywhere;
+
+        font-size: 11px;
+
+        line-height: 1.6;
+    }
+
+
+    /* FOOTER */
+
+    .footer-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .footer-right {
+        text-align: left;
+    }
+
+    .footer-right div {
+        flex-wrap: wrap;
+    }
+
+
+    /* FLOATING WHATSAPP */
+
+    .whatsapp-floating {
+        right: 16px;
+
+        bottom: 18px;
+
+        width: 54px;
+        height: 54px;
+
+        padding: 0;
+
+        justify-content: center;
+    }
+
+    .whatsapp-floating b {
+        display: none;
+    }
+
+    .whatsapp-floating span {
+        font-size: 21px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .container,
+    .hero-inner {
+        width: calc(100% - 30px);
+    }
+
+    .hero {
+        min-height: 680px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-description {
+        font-size: 11px;
+    }
+
+    .rituals {
+        padding-top: 88px;
+    }
+
+    .contact-direct {
+        padding-left: 18px;
+
+        padding-right: 18px;
+    }
+
+    .contact-submit {
+        min-height: 55px;
+
+        font-size: 8px;
+    }
+
+    .whatsapp-floating {
+        right: 12px;
+
+        bottom: 14px;
+
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
